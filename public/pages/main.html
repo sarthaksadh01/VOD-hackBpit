@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="../css/main.css">
+<div class="container">
+
+    <h1>Netflix</h1>
+    <div class="row">
+          <div class="col-sm-3 mb-3" ng-repeat="movies in netflix">
+          <div class=" card bg-dark text-white" >
+            <img class="card-img" ng-src="{{movies.poster}}" alt="Card image">
+            <div class="card-img-overlay">
+              <!-- <h5 class="card-title">{{movies.title}}</h5> -->
+              <!-- <p class="card-text">{{movies.title}}</p> -->
+              <p class="card-text"><a ng-href="#" class="button"><i style="font-size:30px;" class="far fa-play-circle"></i></a></p>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+    <h1>Prime Video</h1>
+
+    <div class="row">
+        <div class="col-sm-3 mb-3" ng-repeat="movies in prime">
+            <div class="card bg-primary" >
+                <div class="card-body">
+                  <h5 class="card-title text-white">{{movies.title}}</h5>
+                  <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                  <a href="#"><i style="font-size:30px;" class="far fa-play-circle"></i></a>
+                </div>
+              </div>
+
+  </div>
+
+
+
+    <h1>Hotstar</h1>
+
+    <div class="row">
+        <div class="col-sm-3 mb-3" ng-repeat="movies in hotstar">
+            <div class="card bg-success" >
+                <div class="card-body">
+                  <h5 class="card-title text-white">{{movies.title}}</h5>
+                  <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                  <a href="#"><i style="font-size:30px;" class="far fa-play-circle"></i></a>
+                </div>
+              </div>
+
+  </div>
+
+  </div>
+
+</div>
