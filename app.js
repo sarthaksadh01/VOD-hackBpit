@@ -4,6 +4,7 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 const path = require('path');
+const movieTrailer = require('movie-trailer');
 
 var port = process.env.PORT || 3000;
 
@@ -14,6 +15,8 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 
 var Movies = require('./models/movies');
+
+
 
 // var fs = require('fs');
 // var p = './public/data/netflix.json';
@@ -28,7 +31,7 @@ var Movies = require('./models/movies');
 //     });
 //     _movie.save((err) => {
 //         console.log(`saved ${i}`);
-      
+
 
 //     });
 // }
@@ -46,7 +49,7 @@ var Movies = require('./models/movies');
 //         console.log(`saved ${i}`);
 //     }
 // }
-      
+
 
 //     });
 // }
@@ -62,7 +65,7 @@ var Movies = require('./models/movies');
 //     });
 //     _movie.save((err) => {
 //         console.log(`saved ${i}`);
-      
+
 
 //     });
 // }
@@ -72,7 +75,7 @@ var Movies = require('./models/movies');
 //console.log(data);
 
 app.get('/api/netflix', (req, res, next) => {
-    var q = Movies.find({provider:"netflix"}).limit(8);
+    var q = Movies.find({ provider: "netflix" }).limit(8);
     q.exec(function (err, movies) {
         if (err) {
             console.log("database error");
@@ -84,7 +87,7 @@ app.get('/api/netflix', (req, res, next) => {
 
 });
 app.get('/api/prime', (req, res, next) => {
-    var q = Movies.find({provider:"amazon prime"}).limit(8);
+    var q = Movies.find({ provider: "amazon prime" }).limit(8);
     q.exec(function (err, movies) {
         if (err) {
             console.log("database error");
@@ -96,7 +99,7 @@ app.get('/api/prime', (req, res, next) => {
 
 });
 app.get('/api/hotstar', (req, res, next) => {
-    var q = Movies.find({provider:"hotstar"}).limit(8);
+    var q = Movies.find({ provider: "hotstar" }).limit(8);
     q.exec(function (err, movies) {
         if (err) {
             console.log("database error");
@@ -117,12 +120,23 @@ app.get('/api/search/:id', function (req, res) {
     });
 });
 
+app.get('/api/title/:id', function (req, res) {
+    var id = req.params.id;
+    console.log(id);
+    movieTrailer(id)
+        .then(response => res.send(response)
+
+        );
+
+});
+
+
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
-app.get('/movie', function (req, res) {
-    res.send("haha");
-});
+// app.get('/movie', function (req, res) {
+//     res.send("haha");
+// });
 
 app.listen(port);
