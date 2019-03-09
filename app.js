@@ -26,7 +26,7 @@ var Movies = require('./models/movies');
 
 
 
-// var fs = require('fs');
+var fs = require('fs');
 // var p = './public/data/netflix.json';
 // var data = JSON.parse(fs.readFileSync(p));
 // for(var i=0;i<data.length;i++){
