@@ -27,15 +27,15 @@ var Movies = require('./models/movies');
 
 
 var fs = require('fs');
-var p = './public/data/netflix.json';
+var p = './public/data/hotstar.json';
 var data = JSON.parse(fs.readFileSync(p));
 for(var i=0;i<data.length;i++){
     var _movie = new Movies({
         "title": data[i].Title,
-        "poster": data[i].Image_url,
-        "video": data[i].Link,
+        "poster": data[i].Image,
+        // "video": data[i].Link,
         "rating": data[i].rating,
-        "provider":"netflix"
+        "provider":"hotstar"
     });
     _movie.save((err) => {
         console.log(`saved ${i}`);
