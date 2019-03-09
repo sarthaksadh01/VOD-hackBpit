@@ -27,22 +27,22 @@ var Movies = require('./models/movies');
 
 
 var fs = require('fs');
-// var p = './public/data/netflix.json';
-// var data = JSON.parse(fs.readFileSync(p));
-// for(var i=0;i<data.length;i++){
-//     var _movie = new Movies({
-//         "title": data[i].Title,
-//         "poster": data[i].Image_url,
-//         "video": data[i].Link,
-//         "rating": data[i].rating,
-//         "provider":"netflix"
-//     });
-//     _movie.save((err) => {
-//         console.log(`saved ${i}`);
+var p = './public/data/netflix.json';
+var data = JSON.parse(fs.readFileSync(p));
+for(var i=0;i<data.length;i++){
+    var _movie = new Movies({
+        "title": data[i].Title,
+        "poster": data[i].Image_url,
+        "video": data[i].Link,
+        "rating": data[i].rating,
+        "provider":"netflix"
+    });
+    _movie.save((err) => {
+        console.log(`saved ${i}`);
 
 
-//     });
-// }
+    });
+}
 // var p = './public/data/prime.json';
 //  var data = JSON.parse(fs.readFileSync(p));
 // for(var i=0;i<data.length;i++){
@@ -61,22 +61,22 @@ var fs = require('fs');
 
 //     });
 // }
- var p = './public/data/prime.json';
- var data = JSON.parse(fs.readFileSync(p));
-for(var i=0;i<data.length;i++){
-    var _movie = new Movies({
-        "title": data[i].Title,
-        "poster": "",
-        "video": "",
-        "rating": data[i].rating,
-        "provider":"amazon prime"
-    });
-    _movie.save((err) => {
-        console.log(`saved ${i}`);
+//  var p = './public/data/prime.json';
+//  var data = JSON.parse(fs.readFileSync(p));
+// for(var i=0;i<data.length;i++){
+//     var _movie = new Movies({
+//         "title": data[i].Title,
+//         "poster": "",
+//         "video": "",
+//         "rating": data[i].rating,
+//         "provider":"amazon prime"
+//     });
+//     _movie.save((err) => {
+//         console.log(`saved ${i}`);
 
 
-    });
-}
+//     });
+// }
 
 
 
